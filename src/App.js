@@ -1,13 +1,16 @@
 import React from "react";
 import Header from "./Layout/Header";
 import Meals from "./Meals/Meals";
+import Cart from "./Components/Cart/Cart";
+
 
 
 function App() {
   return (
     <React.Fragment>
       <Header />
-      <Meals/>
+      <Meals />
+      <Cart />
     </React.Fragment>
   );
 }
