@@ -5,7 +5,7 @@ import ReactDOM  from "react-dom";
 
 
 export const BackDrop = (props) => {
-  return <div className={classes.modal}/>;
+  return <div className={classes.backdrop} onClick={props.onHide} />;
 };
 
 export const ModalOverlay = (props) => {
@@ -15,13 +15,20 @@ export const ModalOverlay = (props) => {
     </div>
   );
 };
-const portalElement = document.getElementById('overlays');
+
 
 const Modal = (props) => { 
+  const portalElement = document.getElementById("overlays");
     return (
       <Fragment>
-        {ReactDOM.createPortal(<BackDrop />, portalElement)}
-        {ReactDOM.createPortal(<ModalOverlay>{props.children}</ModalOverlay>, portalElement)}
+        {ReactDOM.createPortal(
+          <BackDrop onHide={props.onClick} />,
+          portalElement
+        )}
+        {ReactDOM.createPortal(
+          <ModalOverlay>{props.children}</ModalOverlay>,
+          portalElement
+        )}
       </Fragment>
     );
 }

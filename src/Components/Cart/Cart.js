@@ -1,11 +1,9 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import classes from "./Cart.module.css";
 import Card from "../Card/Card";
-import Modal from '../Modal/Modal'
+import Modal from "../Modal/Modal";
 
-
-
-const Cart = () => {
+const Cart = (props) => {
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {[{ id: "c1", name: "sushi", amount: 2, price: 12.99 }].map((item) => (
@@ -13,19 +11,23 @@ const Cart = () => {
       ))}
     </ul>
   );
-  const [isClicked, setIsClicked] = useState(false);
-  const [mealsInCart, setMealsInCart] = useState([]);
 
   return (
-    <Modal>
+    <Modal onClick={props.hideCartHandler}>
       {cartItems}
       <div className={classes.total}>
         <span>Total amount:</span>
-        <span> skupek cen</span>
-          </div>
-          <div className={classes.actions}>
-      <button className={classes['button--alt']}>Close</button>
-      <button className={classes.button}>Order</button></div>
+        <span> 35,88</span>
+      </div>
+      <div className={classes.actions}>
+        <button
+          className={classes["button--alt"]}
+          onClick={props.hideCartHandler}
+        >
+          Close
+        </button>
+        <button className={classes.button}>Order</button>
+      </div>
     </Modal>
   );
 };
